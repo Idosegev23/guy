@@ -1,0 +1,535 @@
+/* Base Styles */
+:root {
+    --primary-color: #6e4d33;
+    --secondary-color: #8b735a;
+    --accent-color: #456940;
+    --background-color: #f8f4ec;
+    --text-color: #333;
+    --light-text: #666;
+    --white: #fff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Heebo', sans-serif;
+    background-image: url('https://source.unsplash.com/random/1920x1080/?pine-wood-texture');
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text-color);
+    line-height: 1.6;
+    direction: rtl;
+}
+
+/* Overlay for better readability over wood texture */
+body:before {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 251, 245, 0.85);
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 2.2rem;
+    position: relative;
+}
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+    margin: 0.5rem auto;
+}
+
+/* Button Styles */
+.cta-button, .submit-button {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.3s, transform 0.2s;
+    cursor: pointer;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.cta-button:hover, .submit-button:hover {
+    background-color: #385536;
+    transform: translateY(-2px);
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.top-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 60px;
+    width: auto;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/random/1920x1080/?woodworking,carpentry') no-repeat center center / cover;
+    color: var(--white);
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+.hero h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    color: var(--white);
+}
+
+/* Course Stages */
+.course-stages {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.stages-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.stage-card {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.stage-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.stage-icon {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+/* Example Projects */
+.example-projects {
+    padding: 4rem 0;
+}
+
+.projects-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.project-card {
+    flex: 1;
+    min-width: 280px;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.project-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.chair-img {
+    background-image: url('https://source.unsplash.com/random/600x400/?wooden-chair');
+}
+
+.table-img {
+    background-image: url('https://source.unsplash.com/random/600x400/?coffee-table');
+}
+
+.shelf-img {
+    background-image: url('https://source.unsplash.com/random/600x400/?wooden-shelf');
+}
+
+.project-card h3, .project-card p {
+    padding: 0 1.5rem;
+}
+
+.project-card h3 {
+    margin-top: 1rem;
+}
+
+.project-card p {
+    color: var(--light-text);
+    padding-bottom: 1.5rem;
+}
+
+/* Who is the course for */
+.who-for {
+    padding: 4rem 0;
+    background-color: var(--primary-color);
+}
+
+.who-for .section-title {
+    color: var(--white);
+}
+
+.who-for .section-title:after {
+    background-color: var(--white);
+}
+
+.benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.benefit-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.benefit-item i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.benefit-item p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* Price and Offer */
+.price-offer {
+    padding: 4rem 0;
+    background-color: var(--background-color);
+    text-align: center;
+}
+
+.price-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.price {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+.price-details {
+    color: var(--light-text);
+    margin-bottom: 2rem;
+}
+
+/* FAQ */
+.faq {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.faq-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    background-color: var(--background-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, opacity 0.5s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.faq-item.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.faq-item.active {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.faq-item.active .question {
+    color: var(--accent-color);
+}
+
+.question {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+
+.answer {
+    color: var(--light-text);
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s, margin 0.3s;
+}
+
+.faq-item.active .answer {
+    max-height: 200px;
+    margin-top: 1rem;
+}
+
+/* Registration Form */
+.registration {
+    padding: 4rem 0;
+    background-color: var(--background-color);
+}
+
+.registration-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: 'Heebo', sans-serif;
+    font-size: 1rem;
+}
+
+.submit-button {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.whatsapp-link {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.whatsapp-link a {
+    color: #25D366;
+    text-decoration: none;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 0 1.5rem;
+}
+
+.contact-info h3 {
+    color: var(--white);
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.contact-info a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Animation Delay for Reveal Effect */
+.stage-card:nth-child(1),
+.project-card:nth-child(1),
+.benefit-item:nth-child(1),
+.faq-item:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.stage-card:nth-child(2),
+.project-card:nth-child(2),
+.benefit-item:nth-child(2),
+.faq-item:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.stage-card:nth-child(3),
+.project-card:nth-child(3),
+.benefit-item:nth-child(3),
+.faq-item:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.faq-item:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .stages-container, .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .stage-card, .project-card {
+        width: 100%;
+        max-width: 500px;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 6rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .price {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .top-bar .container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    
+    .price-box {
+        padding: 2rem 1rem;
+    }
+} 

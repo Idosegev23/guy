@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // אנימציית "Reveal on Scroll" לאלמנטים
-    const revealElements = document.querySelectorAll('.stage-card, .project-card, .benefit-item, .faq-item');
+    const revealElements = document.querySelectorAll('.stage-card, .project-card, .benefit-item, .faq-item, .instructor-image, .instructor-features li');
     
     // פונקציה לבדיקה אם אלמנט נמצא בתצוגה
     function checkIfInView() {

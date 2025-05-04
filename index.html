@@ -9,8 +9,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
+    <div class="overlay-animation"></div>
+    
     <!-- Top Bar -->
     <header class="top-bar">
         <div class="container">
@@ -23,11 +27,36 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="hero-video-container">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="hero.mov" type="video/quicktime">
+                <!-- גיבוי במקרה שהדפדפן לא תומך בסוג הקובץ -->
+                <source src="hero.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h1>תמיד רציתם לבנות משהו מעץ?</h1>
-                <h2>קורס מעשי של 3 מפגשים – ויוצאים עם רהיט גמור ביד!</h2>
-                <a href="#registration-form" class="cta-button">הצטרפו עכשיו</a>
+                <h1 data-aos="fade-down" data-aos-delay="100">מהרעיון לרהיט</h1>
+                <h2 data-aos="fade-up" data-aos-delay="300">קורס מעשי של 3 מפגשים – ויוצאים עם רהיט גמור ביד!</h2>
+                <div class="course-dates" data-aos="fade-up" data-aos-delay="500">
+                    <h3>תאריכי הסדנה הקרובים</h3>
+                    <div class="dates-container">
+                        <div class="date-item">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>5.6.2024</span>
+                        </div>
+                        <div class="date-item">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>12.6.2024</span>
+                        </div>
+                        <div class="date-item">
+                            <i class="fas fa-calendar-day"></i>
+                            <span>26.6.2024</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="#registration-form" class="cta-button" data-aos="zoom-in" data-aos-delay="700">הירשם עכשיו</a>
             </div>
         </div>
     </section>
@@ -179,27 +208,59 @@
     <!-- Registration Form -->
     <section id="registration-form" class="registration">
         <div class="container">
-            <h2 class="section-title">הרשמה לקורס</h2>
-            <form class="registration-form">
+            <div class="section-header">
+                <h2>הרשמה לסדנה</h2>
+                <p>השאר פרטים ואחזור אליך בהקדם</p>
+            </div>
+            
+            <div class="form-dates">
+                <p class="form-dates-title">בחר את הסדנה הקרובה:</p>
+                <div class="form-dates-list">
+                    <div class="form-date-item">5.6.2024</div>
+                    <div class="form-date-item">12.6.2024</div>
+                    <div class="form-date-item">26.6.2024</div>
+                </div>
+            </div>
+            
+            <form class="registration-form" action="https://hook.eu2.make.com/b1aslq7sm9kwt6g1q3ys10wozm8fx6rt" method="POST">
+                <input type="hidden" name="course_dates" value="5.6.2024, 12.6.2024, 26.6.2024">
+                
                 <div class="form-group">
                     <label for="name">שם מלא</label>
                     <input type="text" id="name" name="name" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="phone">טלפון</label>
                     <input type="tel" id="phone" name="phone" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">אימייל</label>
                     <input type="email" id="email" name="email" required>
                 </div>
-                <button type="submit" class="submit-button">שליחה</button>
-                <p class="whatsapp-link">
-                    <a href="https://wa.me/972503504937" target="_blank">
-                        <i class="fab fa-whatsapp"></i> או הרשמו דרך וואטסאפ
-                    </a>
-                </p>
+                
+                <div class="form-group">
+                    <label for="message">הודעה (אופציונלי)</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                
+                <button type="submit" class="button submit-button">שלח פרטים</button>
+                
+                <div class="form-response success">
+                    תודה על הפנייה! נחזור אליך בהקדם.
+                </div>
+                <div class="form-response error">
+                    אירעה שגיאה בשליחת הטופס. אנא נסה שוב או צור קשר ישירות.
+                </div>
             </form>
+            
+            <div class="whatsapp-link">
+                <a href="https://wa.me/972524444444" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>לשאלות מהירות - צור קשר בוואטסאפ</span>
+                </a>
+            </div>
         </div>
     </section>
 

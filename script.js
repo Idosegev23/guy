@@ -22,6 +22,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // כפתור חזרה למעלה
+    const scrollTopButton = document.querySelector('.scroll-top');
+    
+    if (scrollTopButton) {
+        // הצגת הכפתור כשמגלגלים למטה
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollTopButton.classList.add('visible');
+            } else {
+                scrollTopButton.classList.remove('visible');
+            }
+        });
+        
+        // מעבר לראש הדף בלחיצה
+        scrollTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+    
     // אנימציה חלקה לניווט בין עוגנים
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
@@ -76,4 +98,27 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', checkIfInView);
     // בדיקה ראשונית בעת טעינת הדף
     checkIfInView();
+    
+    // אפקט Parallax בגלילה
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset;
+        
+        // אפקט פרלקס על רקע עץ
+        document.body.style.backgroundPosition = `center ${scrollPosition * 0.05}px`;
+    });
+    
+    // אפקט הופעה לכותרת הראשית
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+        setTimeout(() => {
+            heroContent.style.opacity = '0';
+            heroContent.style.transform = 'translateY(20px)';
+            heroContent.style.transition = 'opacity 0.8s, transform 0.8s';
+            
+            setTimeout(() => {
+                heroContent.style.opacity = '1';
+                heroContent.style.transform = 'translateY(0)';
+            }, 100);
+        }, 300);
+    }
 }); 

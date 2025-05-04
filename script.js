@@ -110,18 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Video playback optimizations
-    const heroVideo = document.querySelector('.hero-video');
-    if (heroVideo) {
-        // Ensure video loads correctly
-        heroVideo.addEventListener('loadeddata', function() {
-            // Video is loaded and can be played
-            heroVideo.play().catch(error => {
-                console.warn('Autoplay was prevented:', error);
-            });
-        });
-    }
-
     // Initial animation overlay
     const overlayAnimation = document.querySelector('.overlay-animation');
     if (overlayAnimation) {
@@ -131,50 +119,123 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
     }
 
-    // כפתור חזרה למעלה
-    const scrollTopButton = document.querySelector('.scroll-top');
+    // Wood grain animation for decorative elements
+    const woodGrainElements = document.querySelectorAll('.wood-grain-decoration');
+    if (woodGrainElements.length > 0) {
+        woodGrainElements.forEach((element, index) => {
+            // Add subtle animation with different delays
+            element.style.animation = `woodGrainShine 3s ease-in-out ${index * 0.7}s infinite`;
+        });
+    }
     
-    if (scrollTopButton) {
-        // הצגת הכפתור כשמגלגלים למטה
+    // Add woodwork patterns to section backgrounds
+    const addWoodPattern = () => {
+        const sections = document.querySelectorAll('.course-stages, .instructor, .example-projects, .registration');
+        sections.forEach((section, index) => {
+            // Create wood pattern element
+            const pattern = document.createElement('div');
+            pattern.className = 'wood-pattern-bg';
+            // Alternate pattern style
+            pattern.dataset.patternType = index % 2 === 0 ? 'rings' : 'lines';
+            // Insert as first child to be behind other content
+            section.insertBefore(pattern, section.firstChild);
+        });
+    };
+    addWoodPattern();
+
+    // Scroll to top button functionality
+    const scrollTopBtn = document.querySelector('.scroll-top');
+    
+    if (scrollTopBtn) {
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                scrollTopButton.classList.add('visible');
+                scrollTopBtn.classList.add('visible');
             } else {
-                scrollTopButton.classList.remove('visible');
+                scrollTopBtn.classList.remove('visible');
             }
         });
         
-        // מעבר לראש הדף בלחיצה
-        scrollTopButton.addEventListener('click', function() {
+        scrollTopBtn.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
     }
-    
-    // הדגשת שאלות נפוצות בעת לחיצה
-    const faqItems = document.querySelectorAll('.faq-item');
-    if (faqItems) {
-        faqItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // הסרת המחלקה מכל האלמנטים האחרים
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
+
+    // Interactive elements behavior
+    const handleInteractiveElements = () => {
+        // FAQ items toggle
+        const faqItems = document.querySelectorAll('.faq-item');
+        if (faqItems.length > 0) {
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    this.classList.toggle('active');
+                    
+                    // Add wood creaking sound effect
+                    if (this.classList.contains('active')) {
+                        playWoodSound('creak');
                     }
                 });
-                
-                // הוספה או הסרה של המחלקה מהאלמנט הנוכחי
-                this.classList.toggle('active');
             });
-        });
+        }
+        
+        // Buttons hover wood sound effect
+        const buttons = document.querySelectorAll('.cta-button, .submit-button');
+        if (buttons.length > 0) {
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => playWoodSound('tap'));
+            });
+        }
+    };
+    handleInteractiveElements();
+    
+    // Simulate wood sounds (creaking, tapping)
+    function playWoodSound(type) {
+        // Simulate different wood sounds
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        if (type === 'creak') {
+            // Creaking wood sound
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.setValueAtTime(120, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(60, audioContext.currentTime + 0.2);
+            
+            gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.3);
+        } else if (type === 'tap') {
+            // Wood tap sound
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(300, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(80, audioContext.currentTime + 0.1);
+            
+            gainNode.gain.setValueAtTime(0.03, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+            
+            oscillator.start();
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
     }
     
-    // אנימציית "Reveal on Scroll" לאלמנטים
+    // Reveal animations for elements when they scroll into view
     const revealElements = document.querySelectorAll('.stage-card, .project-card, .benefit-item, .faq-item, .instructor-image, .instructor-features li');
     
-    // פונקציה לבדיקה אם אלמנט נמצא בתצוגה
     function checkIfInView() {
         revealElements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
@@ -186,31 +247,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // הוספת מאזין לגלילה
     window.addEventListener('scroll', checkIfInView);
-    // בדיקה ראשונית בעת טעינת הדף
-    checkIfInView();
+    checkIfInView(); // Initial check
     
-    // אפקט Parallax בגלילה
+    // Parallax effect for wood particles in hero section
     window.addEventListener('scroll', function() {
         const scrollPosition = window.pageYOffset;
+        const heroSection = document.querySelector('.hero');
+        const woodParticles = document.querySelector('.wood-particles');
         
-        // אפקט פרלקס על רקע עץ
+        if (heroSection && woodParticles) {
+            const heroHeight = heroSection.offsetHeight;
+            const scrollRatio = scrollPosition / heroHeight;
+            
+            if (scrollRatio <= 1) {
+                woodParticles.style.transform = `translateY(${scrollPosition * 0.2}px)`;
+            }
+        }
+        
+        // Subtle parallax for background
         document.body.style.backgroundPosition = `center ${scrollPosition * 0.05}px`;
     });
-    
-    // אפקט הופעה לכותרת הראשית
-    const heroContent = document.querySelector('.hero-content');
-    if (heroContent) {
-        setTimeout(() => {
-            heroContent.style.opacity = '0';
-            heroContent.style.transform = 'translateY(20px)';
-            heroContent.style.transition = 'opacity 0.8s, transform 0.8s';
-            
-            setTimeout(() => {
-                heroContent.style.opacity = '1';
-                heroContent.style.transform = 'translateY(0)';
-            }, 100);
-        }, 300);
-    }
 }); 

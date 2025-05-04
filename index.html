@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מהרעיון לרהיט - קורס נגרות מעשי למתחילים</title>
+    <title>מהרעיון לרהיט - סדנת נגרות מעשית עם גיא דהן</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,11 +15,19 @@
 <body>
     <div class="overlay-animation"></div>
     
+    <!-- Carpentry Tools Animation -->
+    <div class="carpentry-tools">
+        <div class="tool"></div>
+        <div class="tool"></div>
+        <div class="tool"></div>
+    </div>
+    
     <!-- Top Bar -->
     <header class="top-bar">
         <div class="container">
             <div class="logo">
                 <img src="logo.png" alt="מהרעיון לרהיט" height="50">
+                <span>גיא דהן - נגרות מקצועית</span>
             </div>
             <a href="#registration-form" class="cta-button">להרשמה מהירה</a>
         </div>
@@ -27,14 +35,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-video-container">
-            <video class="hero-video" autoplay loop muted playsinline>
-                <source src="hero.mov" type="video/quicktime">
-                <!-- גיבוי במקרה שהדפדפן לא תומך בסוג הקובץ -->
-                <source src="hero.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
+        <div class="hero-overlay"></div>
         <div class="container">
             <div class="hero-content">
                 <h1 data-aos="fade-down" data-aos-delay="100">מהרעיון לרהיט</h1>
@@ -59,12 +60,17 @@
                 <a href="#registration-form" class="cta-button" data-aos="zoom-in" data-aos-delay="700">הירשם עכשיו</a>
             </div>
         </div>
+        <div class="wood-particles"></div>
     </section>
 
     <!-- Course Stages -->
     <section class="course-stages">
         <div class="container">
-            <h2 class="section-title">שלבי הקורס</h2>
+            <div class="section-header">
+                <div class="wood-grain-decoration"></div>
+                <h2>שלבי הקורס</h2>
+                <div class="wood-grain-decoration"></div>
+            </div>
             <div class="stages-container">
                 <div class="stage-card">
                     <div class="stage-icon">
@@ -94,7 +100,11 @@
     <!-- About The Instructor -->
     <section class="instructor">
         <div class="container">
-            <h2 class="section-title">הכירו את המדריך</h2>
+            <div class="section-header">
+                <div class="wood-grain-decoration"></div>
+                <h2>הכירו את המדריך</h2>
+                <div class="wood-grain-decoration"></div>
+            </div>
             <div class="instructor-container">
                 <div class="instructor-image">
                     <img src="guy.png" alt="גיא דהן - מדריך הקורס">
@@ -127,7 +137,11 @@
     <!-- Example Projects -->
     <section class="example-projects">
         <div class="container">
-            <h2 class="section-title">פרויקטים לדוגמה</h2>
+            <div class="section-header">
+                <div class="wood-grain-decoration"></div>
+                <h2>פרויקטים לדוגמה</h2>
+                <div class="wood-grain-decoration"></div>
+            </div>
             <div class="projects-container">
                 <div class="project-card">
                     <div class="project-image chair-img"></div>
@@ -151,7 +165,9 @@
     <!-- Who is the course for -->
     <section class="who-for">
         <div class="container">
-            <h2 class="section-title">למי הקורס מתאים?</h2>
+            <div class="section-header">
+                <h2>למי הקורס מתאים?</h2>
+            </div>
             <div class="benefits">
                 <div class="benefit-item">
                     <i class="fas fa-check-circle"></i>
@@ -183,7 +199,11 @@
     <!-- FAQ -->
     <section class="faq">
         <div class="container">
-            <h2 class="section-title">שאלות נפוצות</h2>
+            <div class="section-header">
+                <div class="wood-grain-decoration"></div>
+                <h2>שאלות נפוצות</h2>
+                <div class="wood-grain-decoration"></div>
+            </div>
             <div class="faq-container">
                 <div class="faq-item">
                     <h3 class="question">האם צריך ניסיון קודם?</h3>
@@ -209,7 +229,9 @@
     <section id="registration-form" class="registration">
         <div class="container">
             <div class="section-header">
+                <div class="wood-grain-decoration"></div>
                 <h2>הרשמה לסדנה</h2>
+                <div class="wood-grain-decoration"></div>
                 <p>השאר פרטים ואחזור אליך בהקדם</p>
             </div>
             
@@ -256,7 +278,7 @@
             </form>
             
             <div class="whatsapp-link">
-                <a href="https://wa.me/972524444444" target="_blank">
+                <a href="https://wa.me/972503504937" target="_blank">
                     <i class="fab fa-whatsapp"></i>
                     <span>לשאלות מהירות - צור קשר בוואטסאפ</span>
                 </a>
@@ -278,7 +300,7 @@
                 </p>
             </div>
             <div class="copyright">
-                <p>© כל הזכויות שמורות - מהרעיון לרהיט 2023</p>
+                <p>© כל הזכויות שמורות - מהרעיון לרהיט 2024</p>
             </div>
         </div>
     </footer>
@@ -288,6 +310,7 @@
         <i class="fas fa-chevron-up"></i>
     </div>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html> 
